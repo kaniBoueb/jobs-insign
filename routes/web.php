@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\OffreController;
+use App\Http\Controllers\FrontEndController;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
