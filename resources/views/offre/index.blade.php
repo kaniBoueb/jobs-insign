@@ -12,6 +12,8 @@
                         <th scope="col"> Titre </th>
                         <th scope="col"> Date d'émission </th>
                         <th scope="col"> Date d'échéance </th>
+                        <th scope="col"> Nombre de candidats </th>
+                        <th scope="col"> Actions </th>
                     </tr>
                 </thead>
                 
@@ -23,6 +25,8 @@
                             <td> {{ $offre->titre }} </td>
                             <td> {{ $offre->date_emission }} </td>
                             <td> {{ $offre->date_echeance }} </td>
+                            <td></td>
+                            <td></td>
                         </tr>
                         @endforeach     
                     </tbody>
