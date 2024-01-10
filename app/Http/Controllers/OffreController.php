@@ -71,9 +71,9 @@ class OffreController extends Controller
      * @param  \App\Models\Offre  $offre
      * @return \Illuminate\Http\Response
      */
-    public function show(Offre $offre)
+    public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -82,9 +82,10 @@ class OffreController extends Controller
      * @param  \App\Models\Offre  $offre
      * @return \Illuminate\Http\Response
      */
-    public function edit(Offre $offre)
+    public function edit($id)
     {
-        //
+        $offre = Offre::findOrFail($id);
+        return view('offre.edit', compact('offre'));
     }
 
     /**
@@ -94,9 +95,22 @@ class OffreController extends Controller
      * @param  \App\Models\Offre  $offre
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Offre $offre)
+    public function update(Request $request, $id)
     {
-        //
+        Offre::findOrFail($id)->update([
+            'reference_offre' => $request->reference_offre,
+            'titre' => $request->titre,
+            'date_emission' => $request->date_emission,
+            'date_echeance' => $request->date_echeance,
+            'contrat' => $request->contrat,
+            'fonction' => $request->fonction,
+            'pays' => $request->pays,
+            'description_poste' => $request->description_poste,
+        ]);
+
+        notify()->success('Offre modifée avec succès');
+
+        return redirect()->route('offre.index');
     }
 
     /**
@@ -105,9 +119,15 @@ class OffreController extends Controller
      * @param  \App\Models\Offre  $offre
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Offre $offre)
+    public function destroy($id)
     {
-        //
+        $offre = Offre::findOrFail($id);
+
+        $offre->delete();
+
+        notify()->success('Offre supprimée avec succès');
+
+        return redirect()->route('offre.index');
     }
 
     public function search(Request $request)

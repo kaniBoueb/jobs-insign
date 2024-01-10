@@ -31,7 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/modifier-offre/{id}', [OffreController::class, 'edit'])->name('offre.edit');
     Route::post('/modifier-offre/{id}', [OffreController::class, 'update'])->name('offre.update');
 
-    Route::post('/supprimer-offre/{id}', [OffreController::class, 'destroy'])->name('offre.destroy');
+    Route::get('/supprimer-offre/{id}', [OffreController::class, 'destroy'])->name('offre.delete');
 
 });
 
