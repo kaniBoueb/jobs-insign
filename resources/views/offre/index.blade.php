@@ -27,9 +27,8 @@
                             <td> {{ $offre->date_echeance }} </td>
                             <td></td>
                             <td style="background: #14214c; justify-content: center; align-items: center; border-top-right-radius: 50px; border-bottom-right-radius: 50px; border: 1px solid #00000000;">
-                                <i class="fa fa-eye text-light"></i>
-                                <i class="fa fa-pen text-light"></i>
-                                <i class="fa fa-trash text-light"></i>
+                                <a href="{{ route('offre.edit', $offre->id)}}" id="edit"><i class="fa fa-pen text-light"></i></a>
+                                <a href="{{ route('offre.delete', $offre->id)}}" id="delete"><i class="fa fa-trash text-light"></i></a>
                             </td>
                         </tr>
                         <tr style="height: 15px"></tr>
