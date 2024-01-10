@@ -3,6 +3,7 @@
 @section('content')
     <div class="container">
         <div class="offre-card" style="width: 800px; margin: 0 auto;">
+            <h1 class="title-page">Formulaire d'ajout</h1>
             <form action="{{ route('offre.store')}}" method="POST" class="row">
                 @csrf
                 <div class="form-group col-md-6 my-3">
@@ -43,8 +44,8 @@
                 <div class="form-group col-md-6 my-3">
                     <select class="form-select form-control" id="articles-pays" name="pays">
                         <option selected>Pays</option>
-                        <option value="ci">Côte d'Ivoire</option>
-                        <option value="fr">France</option>
+                        {{-- <option value="ci">Côte d'Ivoire</option>
+                        <option value="fr">France</option> --}}
                         <option value="sn">Sénégal</option>
                     </select>
                 </div>
