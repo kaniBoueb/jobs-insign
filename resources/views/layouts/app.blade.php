@@ -15,11 +15,20 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/fontawesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" />
     
     <!-- Styles -->   
     {{-- @notifyCss --}}
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style type="text/css">
+        i{
+            font-size: 16px !important;
+            padding: 2px 7px;
+            /* color: #fff */
+        }
 
+    </style>
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <script src="{{ asset('js/app.js') }}" defer></script>

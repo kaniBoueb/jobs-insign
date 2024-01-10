@@ -4,7 +4,7 @@
     <div class="container">
         @if (count($offres)> 0)
             <h2>Liste des offres </h2> 
-            <table class="table table-striped">
+            <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -19,15 +19,20 @@
                 
                 <tbody>
                         @foreach ($offres as $offre)
-                        <tr>
-                            <th scope="row"> {{ $offre->id }} </th>
+                        <tr style="height: 65px; vertical-align: middle; margin-bottom: 5px; border: 1px solid #dedede">
+                            <td style="border: 1px solid #00000000; border-top-left-radius: 50px; border-bottom-left-radius: 50px; text-align: center; color: #fff; background: #14214c; padding: 0 20px; margin-right: 30px" scope="row"> {{ $offre->id }} </td>
                             <td> {{ $offre->reference_offre }} </td>
                             <td> {{ $offre->titre }} </td>
                             <td> {{ $offre->date_emission }} </td>
                             <td> {{ $offre->date_echeance }} </td>
                             <td></td>
-                            <td></td>
+                            <td style="background: #14214c; justify-content: center; align-items: center; border-top-right-radius: 50px; border-bottom-right-radius: 50px; border: 1px solid #00000000;">
+                                <i class="fa fa-eye text-light"></i>
+                                <i class="fa fa-pen text-light"></i>
+                                <i class="fa fa-trash text-light"></i>
+                            </td>
                         </tr>
+                        <tr style="height: 15px"></tr>
                         @endforeach     
                     </tbody>
                 </table>
