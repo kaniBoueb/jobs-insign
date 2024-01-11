@@ -98,6 +98,18 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Les extras
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{{ route('all.postes') }}">Gérer les postes</a></li>
+                                <li><a class="dropdown-item" href="{{ route('all.countries') }}">Gérer les pays</a></li>
+                                <li><a class="dropdown-item" href="{{ route('all.contrats') }}">Gérer les contrats</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         @guest
@@ -120,9 +132,9 @@
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -142,16 +154,24 @@
         </main>
     </div>
     <script>
-        var contrat = document.querySelector('#articles-contrat');
-        if (contrat != '') {
-            contrat.addEventListener('change', function () {
-                var valeurContrat = contrat.value;
-                var dateE = document.querySelector('#date_em').value;
-                var refOffre = document.querySelector('#reference_offre');
-                var fonction = document.querySelector('#articles-fonction').value;
-                refOffre.value = valeurContrat+"-"+fonction.replace(/_/g, "")+"-"+dateE;
-            });
+        var contrat = document.querySelector('.articles-contrat');
+if (contrat != '') {
+    contrat.addEventListener('change', function () {
+        var valeurContrat = contrat.value;
+        var dateE = document.querySelector('#date_em').value;
+        var refOffre = document.querySelector('#reference_offre');
+        var fonctionElement = document.querySelector('.articles-fonction');
+        
+        // Vérifier si l'élément .articles-fonction existe
+        if (fonctionElement) {
+            var fonction = fonctionElement.value;
+            refOffre.value = valeurContrat + "-" + fonction.replace(/" "/g, "") + "-" + dateE;
+        } else {
+            console.error('Element .articles-fonction introuvable.');
         }
+    });
+}
+
     </script>
     @notifyJs
 </body>

@@ -24,13 +24,25 @@
             height: 100vh;
             display: flex;
             align-items: center;
+            background: #18224F;
+            background: linear-gradient(to top right,#18224F,#7BE4B5);
         }
 
         .le-form {
             width: 600px;
             margin: 0 auto !important;
             padding: 50px 30px;
-            border: 1px solid #14214c;
+            border: 1px solid #18224F;
+            background: #fff;
+        }
+
+        input {
+            outline: none !important;
+            border: 1px solid #18224F !important;
+        }
+
+        .logo {
+            width: 100px !important;
         }
     </style>
     {{-- @notifyCss --}}
@@ -47,6 +59,9 @@
     <div id="login">
     <div class="container">
         <div class="row justify-content-center le-form">
+            <div class="logo">
+                <img src="{{ asset("logo.png") }}" alt="logo Insign" srcset="">
+            </div>
             <form method="POST" action="{{ route('login') }}">
                 @csrf
 
@@ -92,7 +107,7 @@
 
                 <div class="row mb-0">
                     <div class="col-md-8">
-                        <button type="submit" class="btn text-light" style="background: #14214c">
+                        <button type="submit" class="btn text-light" style="background: #18224F">
                             {{ __('Se connecter') }}
                         </button>
 
