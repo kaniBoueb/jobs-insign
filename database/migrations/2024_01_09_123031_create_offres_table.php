@@ -17,10 +17,10 @@ return new class extends Migration
             $table->string('titre');
             $table->date('date_emission');
             $table->date('date_echeance');
-            $table->string('contrat');
-            $table->string('fonction');
-            $table->string('pays');
             $table->text('description_poste');
+            $table->integer('poste_id');
+            $table->integer('contrat_id');
+            $table->integer('country_id');
             $table->timestamps();
         });
     }
