@@ -17,15 +17,87 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/fontawesome.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" rel="stylesheet">
     
     <!-- Styles -->   
     {{-- @notifyCss --}}
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style type="text/css">
+
+        #app{
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
         i{
             font-size: 16px !important;
             padding: 2px 7px;
             /* color: #fff */
+        }
+        .content{
+            display: flex;
+            justify-content: space-between;
+            /* background: red; */
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .left-part{
+            display: block;
+            position: relative;
+            height: 100%;
+            background: #f8f9fa;
+            width: 300px;
+            padding: 20px 0;
+            padding-right: 30px;
+            /* box-shadow: 0px 0px 0 1px rgba(0, 0, 0, 0.2); */
+        }
+
+        .right-part {
+            position: relative;
+            width: calc(100% - 300px);
+            display: block;
+            background: #fff;
+        }
+
+        ul, li {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .sidebar .side{
+            display: flex;
+            /* justify-content: start; */
+            align-items: center;
+            padding: 12px 20px;
+            margin: 3px 0;
+        }
+
+        .sidebar i {
+            font-size: 24px;
+            color: #222c56;
+            padding: 6px 10px;
+            border: 1px solid #222c56;
+            border-radius: 5px;
+            margin-right: 20px;
+            box-shadow: 2px 2px 0 0;
+        }
+
+        .sidebar a{
+            color: #222c56;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        hr {
+            color: #aaa !important;
+        }
+
+        .side:hover {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 2px 2px 2px 0px #eee;
         }
 
     </style>
@@ -73,8 +145,8 @@
     </script>
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <div id="app" style="overflow: hidden">
+        <nav class="navbar navbar-expand-md navbar-light bg-white">
             <div class="container">
                 <a class="navbar-brand upper fw-bold" href="{{ url('/home') }}">
                     <span class="text-primary fw-bold">JOBS.</span>INSIGN
@@ -93,6 +165,13 @@
                             <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <li><a class="dropdown-item" href="{{ route('offre.create') }}">Ajouter une offre</a></li>
                                 <li><a class="dropdown-item" href="{{ route('offre.index') }}">Lister les offres</a></li>
+                                <hr>
+                                <li><a class="dropdown-item" href="{{ route('all.postes') }}">Gérer les postes</a></li>
+                                <li><a class="dropdown-item" href="{{ route('all.countries') }}">Gérer les pays</a></li>
+                                <li><a class="dropdown-item" href="{{ route('all.contrats') }}">Gérer les contrats</a></li>
+                                <hr>
+                                <li><a class="dropdown-item" href="{{ route('all.process') }}">Gérer les Process</a></li>
+
                             </ul>
                         </li>
                     </ul>
@@ -104,9 +183,9 @@
                                 Les extras
                             </a>
                             <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="{{ route('all.postes') }}">Gérer les postes</a></li>
+                                {{-- <li><a class="dropdown-item" href="{{ route('all.postes') }}">Gérer les postes</a></li>
                                 <li><a class="dropdown-item" href="{{ route('all.countries') }}">Gérer les pays</a></li>
-                                <li><a class="dropdown-item" href="{{ route('all.contrats') }}">Gérer les contrats</a></li>
+                                <li><a class="dropdown-item" href="{{ route('all.contrats') }}">Gérer les contrats</a></li> --}}
                             </ul>
                         </li>
                     </ul>
@@ -131,10 +210,12 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a href="#" class="dropdown-item">Mon profile</a>
+                                    <hr>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
+                                            {{ __('Déconnexion') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -147,30 +228,34 @@
                 </div>
             </div>
         </nav>
-
-        <main class="py-4">
-            @include('notify::components.notify')
-            @yield('content')
-        </main>
+        <div class="content">
+            <div class="left-part">
+                @include('dashboard.sidebar.sidebar')
+            </div>
+            <div class="right-part">
+                @include('notify::components.notify')
+                @yield('content')
+            </div>
+        </div>
     </div>
     <script>
         var contrat = document.querySelector('.articles-contrat');
-if (contrat != '') {
-    contrat.addEventListener('change', function () {
-        var valeurContrat = contrat.value;
-        var dateE = document.querySelector('#date_em').value;
-        var refOffre = document.querySelector('#reference_offre');
-        var fonctionElement = document.querySelector('.articles-fonction');
-        
-        // Vérifier si l'élément .articles-fonction existe
-        if (fonctionElement) {
-            var fonction = fonctionElement.value;
-            refOffre.value = valeurContrat + "-" + fonction.replace(/" "/g, "") + "-" + dateE;
-        } else {
-            console.error('Element .articles-fonction introuvable.');
+        if (contrat != '' && contrat != null && contrat != undefined) {
+            contrat.addEventListener('change', function () {
+                var valeurContrat = contrat.value;
+                var dateE = document.querySelector('#date_em').value;
+                var refOffre = document.querySelector('#reference_offre');
+                var fonctionElement = document.querySelector('.articles-fonction');
+                
+                // Vérifier si l'élément .articles-fonction existe
+                if (fonctionElement) {
+                    var fonction = fonctionElement.value;
+                    refOffre.value = valeurContrat + "-" + fonction.replace(/" "/g, "") + "-" + dateE;
+                } else {
+                    console.error('Element .articles-fonction introuvable.');
+                }
+            });
         }
-    });
-}
 
     </script>
     @notifyJs

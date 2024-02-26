@@ -22,14 +22,14 @@
                 
                 <tbody>
                         @foreach ($offres as $offre)
-                        <tr style="height: 65px; vertical-align: middle; margin-bottom: 5px; border: 1px solid #dedede">
-                            <td style="border: 1px solid #00000000; border-top-left-radius: 50px; border-bottom-left-radius: 50px; text-align: center; color: #fff; background: #18224F; padding: 0 20px; margin-right: 30px" scope="row"> {{ $offre->id }} </td>
+                        <tr style="height: 45px; vertical-align: middle; margin-bottom: 5px; border: 1px solid #dedede">
+                            <td style="border: 1px solid #00000000; text-align: center; color: #fff; background: #18224F; padding: 0 20px; margin-right: 30px" scope="row"> {{ $offre->id }} </td>
                             <td> {{ $offre->reference_offre }} </td>
                             <td> {{ $offre->titre }} </td>
                             <td> <span class="badge bg-dark">{{ $offre->date_emission }}</span> </td>
                             <td> <span class="badge bg-warning">{{ $offre->date_echeance }} </span> </td>
                             <td></td>
-                            <td style="background: #18224F; justify-content: center; align-items: center; border-top-right-radius: 50px; border-bottom-right-radius: 50px; border: 1px solid #00000000;">
+                            <td style="background: #18224F; justify-content: center; align-items: center; border: 1px solid #00000000;">
                                 <a href="{{ route('offre.edit', $offre->id)}}" id="edit"><i class="fa fa-pen text-light"></i></a>
                                 <a href="{{ route('offre.delete', $offre->id)}}" id="delete"><i class="fa fa-trash text-light"></i></a>
                             </td>

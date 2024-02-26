@@ -4,6 +4,7 @@ use App\Http\Controllers\ContratController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\OffreController;
 use App\Http\Controllers\PosteController;
+use App\Http\Controllers\ProcessusController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -61,6 +62,13 @@ Route::middleware('auth')->group(function () {
         // Route::get('/edit/poste/{id}', 'EditPoste')->name('poste.edit');
         // Route::post('update/poste', 'UpdatePoste')->name('poste.update');
         Route::get('/supprimer-contrat/{id}', 'DeleteContrat')->name('contrat.delete');
+    });
+
+    Route::controller(ProcessusController::class)->group(function(){
+        Route::get('/les-process', 'AllProcess')->name('all.process');
+        Route::get('/nouveau-process', 'AddProcess')->name('add.process');
+        Route::post('/nouveau-process', 'AddProcessus')->name('process.store');
+        Route::get('/supprimer-process/{id}', 'DeleteProcessus')->name('process.delete');
     });
 
 });
