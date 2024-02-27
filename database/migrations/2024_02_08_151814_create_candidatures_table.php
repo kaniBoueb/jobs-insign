@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('candidatures', function (Blueprint $table) {
             $table->id();
             $table->integer("offre_id");
-            $table->integer("process_id");
+            $table->integer("process_id")->default(1);
             $table->string("cand_name");
             $table->string("cand_prenom");
             $table->string("cand_email");

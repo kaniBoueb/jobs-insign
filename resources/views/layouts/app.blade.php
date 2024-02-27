@@ -9,7 +9,6 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
     @notifyCss
-    @vite('resources/css/app.css')
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
@@ -47,7 +46,7 @@
             display: block;
             position: relative;
             height: 100%;
-            background: #f8f9fa;
+            background: #f8fafc;
             width: 300px;
             padding: 20px 0;
             padding-right: 30px;
@@ -147,94 +146,94 @@
 </head>
 <body>
     <div id="app" style="overflow: hidden">
-        <nav class="navbar navbar-expand-md navbar-light bg-white">
-            <div class="container">
-                <a class="navbar-brand upper fw-bold" href="{{ url('/home') }}">
-                    <span class="text-primary fw-bold">JOBS.</span>INSIGN
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Gerer les offres
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="{{ route('offre.create') }}">Ajouter une offre</a></li>
-                                <li><a class="dropdown-item" href="{{ route('offre.index') }}">Lister les offres</a></li>
-                                <hr>
-                                <li><a class="dropdown-item" href="{{ route('all.postes') }}">Gérer les postes</a></li>
-                                <li><a class="dropdown-item" href="{{ route('all.countries') }}">Gérer les pays</a></li>
-                                <li><a class="dropdown-item" href="{{ route('all.contrats') }}">Gérer les contrats</a></li>
-                                <hr>
-                                <li><a class="dropdown-item" href="{{ route('all.process') }}">Gérer les Process</a></li>
-
-                            </ul>
-                        </li>
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Les extras
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                {{-- <li><a class="dropdown-item" href="{{ route('all.postes') }}">Gérer les postes</a></li>
-                                <li><a class="dropdown-item" href="{{ route('all.countries') }}">Gérer les pays</a></li>
-                                <li><a class="dropdown-item" href="{{ route('all.contrats') }}">Gérer les contrats</a></li> --}}
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    Bonjour, {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a href="#" class="dropdown-item">Mon profile</a>
-                                    <hr>
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
-                                            {{ __('Déconnexion') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
         <div class="content">
             <div class="left-part">
                 @include('dashboard.sidebar.sidebar')
             </div>
             <div class="right-part">
                 @include('notify::components.notify')
+                <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+                    <div class="container-fluid">
+                        <a class="navbar-brand upper fw-bold" href="{{ url('/home') }}">
+                            <span class="text-primary fw-bold">JOBS.</span>INSIGN
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+        
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <!-- Left Side Of Navbar -->
+                            <ul class="navbar-nav me-auto">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Gerer les offres
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                        <li><a class="dropdown-item" href="{{ route('offre.create') }}">Ajouter une offre</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('offre.index') }}">Lister les offres</a></li>
+                                        <hr>
+                                        <li><a class="dropdown-item" href="{{ route('all.postes') }}">Gérer les postes</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('all.countries') }}">Gérer les pays</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('all.contrats') }}">Gérer les contrats</a></li>
+                                        <hr>
+                                        <li><a class="dropdown-item" href="{{ route('all.process') }}">Gérer les Process</a></li>
+        
+                                    </ul>
+                                </li>
+                            </ul>
+        
+                            <!-- Right Side Of Navbar -->
+                            <ul class="navbar-nav me-auto">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Les extras
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                        {{-- <li><a class="dropdown-item" href="{{ route('all.postes') }}">Gérer les postes</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('all.countries') }}">Gérer les pays</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('all.contrats') }}">Gérer les contrats</a></li> --}}
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="navbar-nav ms-auto">
+                                <!-- Authentication Links -->
+                                @guest
+                                    @if (Route::has('login'))
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                        </li>
+                                    @endif
+        
+                                    @if (Route::has('register'))
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                        </li>
+                                    @endif
+                                @else
+                                    <li class="nav-item dropdown">
+                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            Bonjour, {{ Auth::user()->name }}
+                                        </a>
+        
+                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                            <a href="#" class="dropdown-item">Mon profile</a>
+                                            <hr>
+                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
+                                                    {{ __('Déconnexion') }}
+                                            </a>
+        
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                @csrf
+                                            </form>
+                                        </div>
+                                    </li>
+                                @endguest
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
                 @yield('content')
             </div>
         </div>

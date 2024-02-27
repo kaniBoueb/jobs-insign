@@ -2,12 +2,12 @@
 
 @section('content')
     <div class="container">
-        <div class="offre-card" style="margin: 0 auto;">
-            <h1 class="title-page">Formulaire d'ajout</h1>
-            <form action="{{ route('offre.store')}}" method="POST" class="row">
+        <div class="offre-card" style="width: 800px; margin: 0 auto;">
+            <h1 class="title-page">Modifier l'offre {{ $offre->titre }}</h1>
+            <form action="{{ route('offre.update', $offre->id)}}" method="POST" class="row">
                 @csrf
                 <div class="form-group col-md-6 my-3">
-                    <input type="text" class="form-control" name="titre" placeholder="Titre de l'offre">
+                    <input type="text" class="form-control" name="titre" placeholder="Titre de l'offre" value="{{ $offre->titre }}">
                 </div>
                 <div class="form-group col-md-6 my-3">
                     <select class="form-select form-control articles-fonction" id="poste_id" name="poste_id">
@@ -17,10 +17,10 @@
                     </select>
                 </div>
                 <div class="form-group col-md-6 my-3">
-                    <input type="text" class="date_em form-control" id="date_em" name="date_emission" placeholder="Date d'émision">
+                    <input type="text" class="date_em form-control" id="date_em" name="date_emission" placeholder="Date d'émision" value="{{ $offre->date_emission }}">
                 </div>
                 <div class="form-group col-md-6 my-3">
-                    <input type="text" class="date_ec form-control" id="date_ec" name="date_echeance" placeholder="Date d'échéance">
+                    <input type="text" class="date_ec form-control" id="date_ec" name="date_echeance" placeholder="Date d'échéance" value="{{ $offre->date_echeance }}">
                 </div>
                 <div class="form-group col-md-6 my-3">
                     <select class="form-select form-control articles-contrat" id="contrat_id" name="contrat_id">
@@ -37,10 +37,10 @@
                     </select>
                 </div>
                 <div class="form-group col-md-6 my-3">
-                    <input type="text" class="form-control" name="reference_offre" id="reference_offre" placeholder="Référence de l'offre">
+                    <input type="text" class="form-control" name="reference_offre" id="reference_offre" placeholder="Référence de l'offre" value="{{ $offre->reference_offre }}" >
                 </div>
                 <div class="form-group col-md-12 my-3">
-                    <textarea class="ckeditor form-control" name="description_poste"></textarea>
+                    <textarea class="ckeditor form-control" name="description_poste">{{ $offre->description_poste }}</textarea>
                 </div>
                 <div class="form-group col-md-4 ">
                     <button class="btn btn-success">Enregistrer</button>

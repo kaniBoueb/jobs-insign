@@ -3,7 +3,7 @@
         <li>
             <div class="side">
                 <i class="bi bi-back"></i>
-                <a href="#" data-href="{{ route('home') }}">Les candidatures</a>
+                <a href="#" data-href="{{ route('candidature.index')}}">Les candidatures</a>
             </div>
         </li>
 

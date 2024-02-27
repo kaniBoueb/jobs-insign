@@ -5,6 +5,7 @@ use App\Http\Controllers\CountryController;
 use App\Http\Controllers\OffreController;
 use App\Http\Controllers\PosteController;
 use App\Http\Controllers\ProcessusController;
+use App\Http\Controllers\CandidatureController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +70,13 @@ Route::middleware('auth')->group(function () {
         Route::get('/nouveau-process', 'AddProcess')->name('add.process');
         Route::post('/nouveau-process', 'AddProcessus')->name('process.store');
         Route::get('/supprimer-process/{id}', 'DeleteProcessus')->name('process.delete');
+    });
+
+    Route::controller(CandidatureController::class)->group(function(){
+        Route::get('/les-candidatures', 'AllCandidatures')->name('candidature.index');
+        Route::get('/{id}/nouvelle-candidature', 'AddCandidatures')->name('candidature.create');
+        Route::post('/nouvelle-candidature', 'AddCandidature')->name('candidature.store');
+        Route::get('/supprimer-candidature/{id}', 'DeleteCandidature')->name('candidature.delete');
     });
 
 });
